@@ -18,3 +18,7 @@ And that's it! \o/
 
 - [dami's Arsenal](https://brotato.wiki.spellsandguns.com/Mod:Dami%27s_Arsenal)
 - [Invasion](https://brotato.wiki.spellsandguns.com/Mod:Invasion)
+
+## More Info
+
+View the original thread on the Space Potatoes Discord [here](https://discord.com/channels/630060181086142487/1031365401868775495). It has a lot more information, including how to use it to make your own mod.
