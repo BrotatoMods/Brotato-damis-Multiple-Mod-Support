@@ -17,7 +17,7 @@ var config = {
 	# because it'll bloat your log file and slow down the initial startup. Note
 	# that .tres files are *always* logged when they're added.
 	# ! THIS SHOULD BE FALSE UNLESS YOU'RE DEBUGGING
-	log_added_content = false,
+	log_added_content = true,
 
 	# If true, loads ZIPs from res://mods instead of get_executable_path.
 	# This lets you test loading ZIPs in Godot, but prevents you from loading
@@ -30,6 +30,7 @@ const mods_dir_path = "res://mods"
 var items = []
 var weapons = []
 var characters = []
+var debug_items = [] # items added to DebugService.items
 
 func _ready():
 	var path = ""
@@ -82,6 +83,10 @@ func _ready():
 				items.append_array(mod_data.items)
 				weapons.append_array(mod_data.weapons)
 				characters.append_array(mod_data.characters)
+				debug_items.append_array(mod_data.debug_items)
+
+				# Apply weapons_characters: Loops over each weapon and adds it
+				# to the corresponding character
 				for i in mod_data.weapons_characters.size():
 					if mod_data.weapons[i]:
 						var wpn_characters = mod_data.weapons_characters[i]
@@ -100,6 +105,7 @@ func _ready():
 	ItemService.items.append_array(items)
 	ItemService.weapons.append_array(weapons)
 	ItemService.characters.append_array(characters)
+	DebugService.debug_items.append_array(debug_items)
 
 	# Debug: Log all loaded content
 	if config.log_added_content:
@@ -109,6 +115,8 @@ func _ready():
 			debuglog("Added Item: " + tr(item.name))
 		for weapon in weapons:
 			debuglog("Added Weapon: " + tr(weapon.name))
+		for debug_item in debug_items:
+			debuglog("Added Debug Weapon: " + tr(debug_item.name))
 
 	# Debug: Test if your weapon was added to a specific character
 	for character in ItemService.characters:
