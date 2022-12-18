@@ -105,6 +105,9 @@ func _ready():
 	ItemService.items.append_array(items)
 	ItemService.weapons.append_array(weapons)
 	ItemService.characters.append_array(characters)
+
+	# Add debug items (which makes you always start with them)
+	DebugService.debug_items = DebugService.debug_items.duplicate() # this is needed in case the array is empty
 	DebugService.debug_items.append_array(debug_items)
 
 	# Debug: Log all loaded content
@@ -116,7 +119,7 @@ func _ready():
 		for weapon in weapons:
 			debuglog("Added Weapon: " + tr(weapon.name))
 		for debug_item in debug_items:
-			debuglog("Added Debug Weapon: " + tr(debug_item.name))
+			debuglog("Added Debug Item: " + tr(debug_item.name))
 
 	# Debug: Test if your weapon was added to a specific character
 	for character in ItemService.characters:
