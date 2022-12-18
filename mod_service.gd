@@ -17,7 +17,7 @@ var config = {
 	# because it'll bloat your log file and slow down the initial startup. Note
 	# that .tres files are *always* logged when they're added.
 	# ! THIS SHOULD BE FALSE UNLESS YOU'RE DEBUGGING
-	log_added_content = true,
+	log_added_content = false,
 
 	# If true, loads ZIPs from res://mods instead of get_executable_path.
 	# This lets you test loading ZIPs in Godot, but prevents you from loading
