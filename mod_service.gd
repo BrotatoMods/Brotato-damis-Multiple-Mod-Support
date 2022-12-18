@@ -4,6 +4,7 @@ extends Node
 # Version:  1.1.0
 # Author:   dami
 # Editors:  Darkly77 (minor edits)
+# Repo:     https://github.com/BrotatoMods/Brotato-damis-Multiple-Mod-Support
 #
 # Usage: Add to your project and autoload this script. Call it `ModService`.
 # You can also edit the config to change where info is logged to

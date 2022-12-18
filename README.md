@@ -2,6 +2,8 @@
 
 Created by dami. Makes it possible to play with multiple mods. The file needs to be added by a mod creator.
 
+View the original thread on Discord [here](https://discord.com/channels/630060181086142487/1031365401868775495).
+
 ### Setup
 
 1. Add a folder called *mods* to your project.
