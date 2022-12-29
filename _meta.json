@@ -1,0 +1,11 @@
+{
+  "id": "dami-Helper",
+  "name": "Dami Helper",
+  "version": "1.0.0",
+  "compatible_game_version": ["0.6.1.6"],
+  "authors": ["dami"],
+  "description": "Makes it easier to add simple characters, weapons and items, that use existing effects and stats.",
+  "website_url": "https://github.com/BrotatoMods",
+  "dependencies": [],
+  "incompatibilities": []
+}
