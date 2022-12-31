@@ -1,4 +1,4 @@
-class_name DamiHelper
+# class_name DamiHelper
 extends Node
 
 # Name:     dami's multi mod support
@@ -12,30 +12,35 @@ var weapons = []
 var characters = []
 var debug_items = [] # items added to DebugService.items
 
+var ModData = load("res://dami-Helper/mod_data.gd").new()
+
 func load_data(mod_data_path):
-	DebugService.dami_init_mod_data(self, mod_data_path)
-
-func _load_data(mod_data_path):
-	var mod_data = ResourceLoader.load(mod_data_path)
-
-	if mod_data is ModData:
-		ModLoader.log_mod("Dami-Helper: Loading ModData: " + mod_data_path)
-		items.append_array(mod_data.items)
-		weapons.append_array(mod_data.weapons)
-		characters.append_array(mod_data.characters)
-		debug_items.append_array(mod_data.debug_items)
-
-		# Apply weapons_characters: Loops over each weapon and adds it
-		# to the corresponding character
-		for i in mod_data.weapons_characters.size():
-			if mod_data.weapons[i]:
-				var wpn_characters = mod_data.weapons_characters[i]
-				for character in wpn_characters:
-					character.starting_weapons.push_back(mod_data.weapons[i])
-					for weapon in character.starting_weapons:
-						DebugService.log_data(str(weapon.my_id))
-	else:
-		ModLoader.log_mod("Dami-Helper: ERROR: Loading failed for unknown resource: " + mod_data_path)
+	ModLoader.dev_log(str("Dami-Helper: load data from path -> ", mod_data_path))
+	var mod_data = load(mod_data_path)
+	ModLoader.dev_log(str("Dami-Helper: loaded data from path -> ", mod_data.resource_path))
+	
+	ModLoader.log_mod("Dami-Helper: Loading ModData: " + mod_data_path)
+	items.append_array(mod_data.items)
+	weapons.append_array(mod_data.weapons)
+	characters.append_array(mod_data.characters)
+	debug_items.append_array(mod_data.debug_items)
+	
+	# Apply weapons_characters: Loops over each weapon and adds it
+	# to the corresponding character
+	for i in mod_data.weapons_characters.size():
+		if mod_data.weapons[i]:
+			var wpn_characters = mod_data.weapons_characters[i]
+			for character in wpn_characters:
+				character.starting_weapons.push_back(mod_data.weapons[i])
+				for weapon in character.starting_weapons:
+					ModLoader.dev_log(str("Dami-Helper: weapon.my_id -> ", weapon.my_id))
+	
+func install_data():
+	ModLoader.log_mod(str("Dami-Helper: Installing ModData"))
+	ModLoader.dev_log(str("Dami-Helper: items -> ", items))
+	ModLoader.dev_log(str("Dami-Helper: weapons -> ", weapons))
+	ModLoader.dev_log(str("Dami-Helper: characters -> ", characters))
+	ModLoader.dev_log(str("Dami-Helper: debug_items -> ", debug_items))
 	
 	# Add loaded content to the game
 	ItemService.items.append_array(items)
@@ -57,10 +62,10 @@ func _load_data(mod_data_path):
 		ModLoader.dev_log("Dami-Helper: Added Debug Item: " + tr(debug_item.name))
 
 	# Debug: Test if your weapon was added to a specific character
-	for character in ItemService.characters:
-		if character.my_id == "character_mage":
-			for weapon in character.starting_weapons:
-				DebugService.log_data(weapon.my_id)
+#	for character in ItemService.characters:
+#		if character.my_id == "character_mage":
+#			for weapon in character.starting_weapons:
+#				DebugService.log_data(weapon.my_id)
 
 	ItemService.init_unlocked_pool()
 	add_unlocked_by_default_without_leak()
