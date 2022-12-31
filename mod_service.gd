@@ -6,7 +6,6 @@ extends Node
 # Author:   dami
 # Editors:  Darkly77 (minor edits)
 # Repo:     https://github.com/BrotatoMods/Brotato-damis-Multiple-Mod-Support
-
 var items = []
 var weapons = []
 var characters = []
