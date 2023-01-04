@@ -1,5 +1,11 @@
 # Brotato - dami's Multiple Mod Support
 
+**!!**
+
+**This repo has been deprecated. It is succeeded by [ContentLoader](https://github.com/BrotatoMods/Brotato-ContentLoader), which is a re-working of this script to work with [ModLoader](https://github.com/GodotModding/mod-loader).**
+
+**!!**
+
 Created by dami. Makes it possible to play with multiple mods. The file needs to be added by a mod creator.
 
 View the original thread on Discord [here](https://discord.com/channels/630060181086142487/1031365401868775495). It starts [here](https://discord.com/channels/630060181086142487/1031365401868775495/1031365588011986995).
